@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rrov">
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/rrov</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+  <link name="dummy">
+  </link>
+  <joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="base_link"/>
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.052446 0.075709 0.0034292"
+        rpy="0 0 0" />
+      <mass
+        value="30" />
+      <inertia
+        ixx="0.35714"
+        ixy="0.00034791"
+        ixz="-0.00017005"
+        iyy="0.90016"
+        iyz="2.0776E-05"
+        izz="0.64952" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="buoyancy_material_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <!-- Link2 -->
+  <gazebo reference="T11_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <link
+    name="buoyancy_material_link">
+    <inertial>
+      <origin
+        xyz="0.0069296 0.088895 0.0005554"
+        rpy="0 0 0" />
+      <mass
+        value="40" />
+      <inertia
+        ixx="1.6738"
+        ixy="-0.00077039"
+        ixz="0.0027143"
+        iyy="5.0917"
+        iyz="0.0018896"
+        izz="3.6542" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/buoyancy_material_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/buoyancy_material_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="buoyancy_material_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.155"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="buoyancy_material_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="cam_link">
+    <inertial>
+      <origin
+        xyz="-0.088954 -6.7906E-05 4.7463E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2" />
+      <inertia
+        ixx="1.3354E-06"
+        ixy="2.6122E-08"
+        ixz="-1.8248E-08"
+        iyy="5.4796E-06"
+        iyz="9.635E-09"
+        izz="5.4866E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/cam_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.9 0.9 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/cam_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="cam_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <joint
+    name="cam_joint"
+    type="fixed">
+    <origin
+      xyz="0.45317 0 0.35241"
+      rpy="1.5708 0.88591 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="cam_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="T11_link">
+    <inertial>
+      <origin
+        xyz="-0.43825 -0.043475 -0.31842"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="8.1264"
+        ixy="-0.56243"
+        ixz="-2.1666"
+        iyy="11.237"
+        iyz="-0.52469"
+        izz="5.4993" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T11_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T11_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T11_joint"
+    type="continuous">
+    <origin
+      xyz="0.46987 0.2207 0.14751"
+      rpy="1.5708 0.131 1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="T11_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+    <limit effort="1000" velocity="1000"/>
+  </joint>
+  <link
+    name="T12_link">
+    <inertial>
+      <origin
+        xyz="-0.073524 0.43194 -0.31945"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="11.306"
+        ixy="0.31089"
+        ixz="-0.061727"
+        iyy="8.0766"
+        iyz="2.218"
+        izz="5.4806" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T12_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T12_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T12_joint"
+    type="continuous">
+    <origin
+      xyz="0.46964 -0.22082 0.1475"
+      rpy="-1.5708 1.4345 -1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="T12_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T13_link">
+    <inertial>
+      <origin
+        xyz="0.39594 0.12244 -0.2733"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="8.3471"
+        ixy="-0.94713"
+        ixz="2.0652"
+        iyy="11.035"
+        iyz="0.81112"
+        izz="5.4806" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T13_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T13_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T13_joint"
+    type="continuous">
+    <origin
+      xyz="-0.46975 0.22076 0.14751"
+      rpy="1.5708 0.26578 -1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="T13_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T14_link">
+    <inertial>
+      <origin
+        xyz="0.082416 -0.4039 -0.27425"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="11.214"
+        ixy="0.62313"
+        ixz="0.28686"
+        iyy="8.1497"
+        iyz="-2.2107"
+        izz="5.4993" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T14_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T14_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T14_joint"
+    type="continuous">
+    <origin
+      xyz="-0.46947 -0.22095 0.1475"
+      rpy="-1.5708 1.3352 1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="T14_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T21_link">
+    <inertial>
+      <origin
+        xyz="-0.27728 0.15216 -0.034069"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="8.885"
+        ixy="1.4252"
+        ixz="-0.082725"
+        iyy="4.6481"
+        iyz="0.26292"
+        izz="11.33" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T21_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.27059 0.27059 0.27059 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T21_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T21_joint"
+    type="continuous">
+    <origin
+      xyz="0.2 0.22 0.19573"
+      rpy="0 0 1.2768" />
+    <parent
+      link="base_link" />
+    <child
+      link="T21_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T22_link">
+    <inertial>
+      <origin
+        xyz="-0.25061 -0.18999 -0.033796"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="9.2043"
+        ixy="-0.75915"
+        ixz="-0.039066"
+        iyy="4.3288"
+        iyz="-0.27284"
+        izz="11.33" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T22_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.27059 0.27059 0.27059 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T22_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T22_joint"
+    type="continuous">
+    <origin
+      xyz="0.2 -0.22 0.19545"
+      rpy="0 0 -1.4177" />
+    <parent
+      link="base_link" />
+    <child
+      link="T22_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T23_link">
+    <inertial>
+      <origin
+        xyz="0.25593 -0.11727 -0.033957"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="5.289"
+        ixy="-2.0823"
+        ixz="-0.24377"
+        iyy="8.2441"
+        iyz="-0.12864"
+        izz="11.33" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T23_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.27059 0.27059 0.27059 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T23_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T23_joint"
+    type="continuous">
+    <origin
+      xyz="-0.2 0.22 0.19561"
+      rpy="0 0 -0.47473" />
+    <parent
+      link="base_link" />
+    <child
+      link="T23_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+  <link
+    name="T24_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T24_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rrov_description/meshes/T24_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T24_joint"
+    type="continuous">
+    <origin
+      xyz="-0.2 -0.22 0.1956"
+      rpy="0 0 0.023762" />
+    <parent
+      link="base_link" />
+    <child
+      link="T24_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="100" velocity="100"/>
+  </joint>
+
+  <transmission name="T11_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="T11_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="T11_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+    <transmission name="T12_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="T12_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="T12_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+    <transmission name="T13_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="T13_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="T13_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+    <transmission name="T14_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="T14_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="T14_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+</robot>

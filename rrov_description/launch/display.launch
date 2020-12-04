@@ -1,0 +1,32 @@
+<launch>
+  <arg
+    name="model" />
+  <arg
+    name="gui"
+    default="False" />
+  <param
+    name="robot_description"
+    textfile="$(find rrov_description)/urdf/rrov_description.urdf" />
+  <param
+    name="use_gui"
+    value="$(arg gui)" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/rrov_description" args="T11_joint_velocity_controller T12_joint_velocity_controller T13_joint_velocity_controller T14_joint_velocity_controller joint_state_controller"/>
+  
+ 
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find rrov_description)/urdf.rviz" />
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="TRUE"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+
+</launch>

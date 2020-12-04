@@ -1,0 +1,20 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find rrov_control)/config/rrov_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/rrov" args="joint_state_controller
+                                    T11_joint_velocity_controller 
+                                    T12_joint_velocity_controller 
+                                    T13_joint_velocity_controller 
+                                    T14_joint_velocity_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/rrov/joint_states" />
+  </node>
+
+</launch>

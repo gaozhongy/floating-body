@@ -1,0 +1,24 @@
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  T11_joint_velocity_controller:
+    #type: position_controllers/JointPositionController
+    type: effort_controllers/JointVelocityController
+    joint: T11_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  T12_joint_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: T12_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  T13_joint_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: T13_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  T14_joint_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: T14_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
